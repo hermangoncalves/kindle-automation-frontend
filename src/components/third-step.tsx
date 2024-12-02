@@ -36,7 +36,7 @@ export function ThirdStep() {
   const [isConverted, setIsConverted] = useState<boolean>(false);
   const [isSending, setIsSending] = useState<boolean>(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [_, setSearchParams] = useSearchParams();
 
   const { toast } = useToast();
 
@@ -145,11 +145,19 @@ export function ThirdStep() {
       setEpubTitle(_epubTitle);
       setIsConverted(true);
     } catch (error) {
-      toast({
-        title: "Conversion Failed",
-        variant: "destructive",
-        description: error?.response?.data?.message,
-      });
+      if (error && typeof error === "object" && "response" in error) {
+        toast({
+          title: "Conversion Failed",
+          variant: "destructive",
+          description: (error as any)?.response?.data?.message,
+        });
+      } else {
+        toast({
+          title: "Conversion Failed",
+          variant: "destructive",
+          description: "An unknown error occurred",
+        });
+      }
     } finally {
       setIsProcessing(false); // Reset processing state
     }

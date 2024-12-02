@@ -1,4 +1,3 @@
-import { KindleEmailForm } from "./kindle-email-form";
 import { RegisterEmailForm } from "./register-email";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
