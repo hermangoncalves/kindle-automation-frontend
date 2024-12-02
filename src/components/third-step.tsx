@@ -90,7 +90,6 @@ export function ThirdStep() {
       toast({
         title: "No file selected",
         description: "Please select a file to convert.",
-        status: "warning",
       });
       return;
     }
@@ -99,8 +98,7 @@ export function ThirdStep() {
     if (!storedKindleEmail) {
       toast({
         title: "No kindle email",
-        description: "Please add a kindle email to convert.",
-        status: "destructive",
+        description: "Please add a kindle email to convert."
       });
       return;
     }
@@ -147,7 +145,6 @@ export function ThirdStep() {
       setEpubTitle(_epubTitle);
       setIsConverted(true);
     } catch (error) {
-      console.log(error?.response);
       toast({
         title: "Conversion Failed",
         variant: "destructive",

@@ -1,4 +1,4 @@
-import { File, Send, Upload } from "lucide-react";
+import { File, Upload } from "lucide-react";
 import { ToastAction } from "./ui/toast";
 import { useToast } from "../hooks/use-toast";
 import { useCallback, useState } from "react";
