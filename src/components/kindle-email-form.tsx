@@ -5,7 +5,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KINDLE_EMAIL_KEY } from "../constants";
 import { useToast } from "../hooks/use-toast";
-import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const registerEmailSchema = z.object({
@@ -16,13 +15,8 @@ type RegisterEmailSchema = z.infer<typeof registerEmailSchema>
 
 
 export function KindleEmailForm() {
-    const [searchParams, setSearchParams] = useSearchParams();
     const [kindleEmail, setKindleEmail] = useState<string>("");
     const { toast } = useToast()
-
-    const currentStep = parseInt(searchParams.get("step") || "0", 10);
-    let nextStep = currentStep;
-
 
 
     const { register, handleSubmit } = useForm<RegisterEmailSchema>({
